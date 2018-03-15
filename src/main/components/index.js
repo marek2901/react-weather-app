@@ -26,9 +26,7 @@ class Main extends Component {
           </li>))
         }
       </ul>
-      <p className="App-intro">
-        <RaisedButton onClick={this.handleButtonClick.bind(this)} label='XDD'/>
-      </p>
+      <RaisedButton onClick={this.handleButtonClick.bind(this)} label='XDD'/>
     </div>);
   }
 }
