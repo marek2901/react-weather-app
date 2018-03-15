@@ -1,37 +1,29 @@
 import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import ActionSearch from 'material-ui/svg-icons/action/search';
 import '../styles/index.css';
 
 import {connect} from 'react-redux'
 
-import {triggerHelloWorld} from '../../actions/creators'
+import {triggerMainReq} from '../../actions/creators'
 
 import PropTypes from 'prop-types'
 
 import AppBar from '../../appBar/components'
+import MainWeatherTable from '../widgets/main-weather-table'
 
 class Main extends Component {
-  handleButtonClick() {
-    let action = triggerHelloWorld('triggered')
-    this.props.dispatch(action)
-  }
-
-  constructor(props){
-    super(props);
-    this.handleButtonClick = this.handleButtonClick.bind(this);
+  handleButtonClick = () => {
+    this.props.dispatch(triggerMainReq())
   }
 
   render() {
     return (<div className="App">
       <AppBar/>
-      <ul>
-        {
-          this.props.records.map((record, index) => (<li key={index}>
-            {record.text}
-          </li>))
-        }
-      </ul>
-      <RaisedButton onClick={this.handleButtonClick} label='XDD'/>
+      <RaisedButton
+        onClick={this.handleButtonClick}
+        icon={<ActionSearch />}/>
+      <MainWeatherTable records={this.props.records} />
     </div>);
   }
 }
@@ -39,7 +31,10 @@ class Main extends Component {
 Main.propTypes = {
   weatherRecords: PropTypes.arrayOf(
     PropTypes.shape({
-      text: PropTypes.string.isRequired
+      temp: PropTypes.number.isRequired,
+      data: PropTypes.string.isRequired,
+      weather: PropTypes.string.isRequired,
+      wind: PropTypes.number.isRequired,
     })
   )
 }
