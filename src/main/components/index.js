@@ -36,7 +36,7 @@ Main.propTypes = {
     PropTypes.shape({
       text: PropTypes.string.isRequired
     })
-  ).isRequired
+  )
 }
 
 const mapStateToProps = state => {
