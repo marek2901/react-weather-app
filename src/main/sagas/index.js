@@ -1,6 +1,7 @@
 import {
   call,
   put,
+  select,
   takeLatest
 } from 'redux-saga/effects'
 import {
@@ -11,12 +12,15 @@ import {
   REQUEST_MAIN_WEATHER_DATA
 } from '../../actions/types'
 
+const getQueryLocation = (state) => state.location
+
 function* fetchWeatherData(action) {
   try {
+    const location = yield select(getQueryLocation)
     const response = yield call(
       fetch,
       `http://api.openweathermap.org/data/2.5/forecast?q=${
-        encodeURIComponent('London,us')
+        encodeURIComponent(location)
       }&appid=${'e921c956172c52a2728a7184e5a2394f'}`,
     );
     const data = yield call([response, response.json])
