@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
-import ActionSearch from 'material-ui/svg-icons/action/search';
 import '../styles/index.css';
 
 import {connect} from 'react-redux'
@@ -11,6 +9,7 @@ import PropTypes from 'prop-types'
 
 import AppBar from '../../appBar/components'
 import MainWeatherTable from '../widgets/main-weather-table'
+import CitySearch from './city-search'
 
 class Main extends Component {
   handleButtonClick = () => {
@@ -20,9 +19,7 @@ class Main extends Component {
   render() {
     return (<div className="App">
       <AppBar/>
-      <RaisedButton
-        onClick={this.handleButtonClick}
-        icon={<ActionSearch />}/>
+      <CitySearch />
       <MainWeatherTable records={this.props.records} />
     </div>);
   }
@@ -40,7 +37,7 @@ Main.propTypes = {
 }
 
 const mapStateToProps = state => {
-  return {records: state.weatherRecords}
+  return {records: state.main.weatherRecords}
 }
 
 Main = connect(mapStateToProps)(Main)

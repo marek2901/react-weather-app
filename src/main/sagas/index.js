@@ -12,7 +12,9 @@ import {
   REQUEST_MAIN_WEATHER_DATA
 } from '../../actions/types'
 
-const getQueryLocation = (state) => state.location
+const getQueryLocation = (state) => {
+  return state.form.citySearchForm.values.location
+}
 
 function* fetchWeatherData(action) {
   try {
