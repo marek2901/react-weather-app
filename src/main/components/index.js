@@ -16,6 +16,11 @@ class Main extends Component {
     this.props.dispatch(action)
   }
 
+  constructor(props){
+    super(props);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
+  }
+
   render() {
     return (<div className="App">
       <AppBar/>
@@ -26,7 +31,7 @@ class Main extends Component {
           </li>))
         }
       </ul>
-      <RaisedButton onClick={this.handleButtonClick.bind(this)} label='XDD'/>
+      <RaisedButton onClick={this.handleButtonClick} label='XDD'/>
     </div>);
   }
 }
