@@ -4,6 +4,10 @@
 
 This is a next part of my learning path to master react.
 
+## Prerequisites
+
+* react scripts, run `npm install -g react-scripts`
+
 ## Install Dependencies
 
 clone this repo and:
