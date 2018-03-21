@@ -7,13 +7,16 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Provider} from 'react-redux'
 import store from './store'
 
-import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter } from 'react-router-dom'
 
-const App = () => (<MuiThemeProvider>
+const App = () => <MuiThemeProvider>
   <Main/>
-</MuiThemeProvider>);
+</MuiThemeProvider>;
 
-ReactDOM.render(<Provider store={store}>
+const ReduxApp = () => <Provider store={store}>
   <App/>
-</Provider>, document.getElementById('root'));
-registerServiceWorker();
+</Provider>;
+
+ReactDOM.render(<BrowserRouter>
+  <ReduxApp />
+</BrowserRouter>, document.getElementById('root'));

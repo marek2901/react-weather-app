@@ -34,8 +34,8 @@ function* fetchWeatherData(action) {
   }
 }
 
-function* mainSaga() {
+function* homeSaga() {
   yield takeLatest(REQUEST_MAIN_WEATHER_DATA, fetchWeatherData);
 }
 
-export default mainSaga;
+export default homeSaga;
