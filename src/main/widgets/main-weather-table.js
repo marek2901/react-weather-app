@@ -23,8 +23,15 @@ export default class MainWeatherTable extends Component {
 
   render() {
     return (
-      <Table fixedHeader={this.tableOpts.fixedHeader} fixedFooter={this.tableOpts.fixedFooter} selectable={this.tableOpts.selectable} multiSelectable={this.tableOpts.multiSelectable}>
-        <TableHeader displaySelectAll={this.tableOpts.showCheckboxes} adjustForCheckbox={this.tableOpts.showCheckboxes} enableSelectAll={this.tableOpts.enableSelectAll}>
+      <Table
+        fixedHeader={this.tableOpts.fixedHeader}
+        fixedFooter={this.tableOpts.fixedFooter}
+        selectable={this.tableOpts.selectable}
+        multiSelectable={this.tableOpts.multiSelectable}>
+        <TableHeader
+          displaySelectAll={this.tableOpts.showCheckboxes}
+          adjustForCheckbox={this.tableOpts.showCheckboxes}
+          enableSelectAll={this.tableOpts.enableSelectAll}>
           <TableRow>
             <TableHeaderColumn>Date</TableHeaderColumn>
             <TableHeaderColumn>Temperature</TableHeaderColumn>
@@ -32,7 +39,11 @@ export default class MainWeatherTable extends Component {
             <TableHeaderColumn>Weather</TableHeaderColumn>
           </TableRow>
         </TableHeader>
-        <TableBody displayRowCheckbox={this.tableOpts.showCheckboxes} deselectOnClickaway={this.tableOpts.deselectOnClickaway} showRowHover={this.tableOpts.showRowHover} stripedRows={this.tableOpts.stripedRows}>
+        <TableBody
+          displayRowCheckbox={this.tableOpts.showCheckboxes}
+          deselectOnClickaway={this.tableOpts.deselectOnClickaway}
+          showRowHover={this.tableOpts.showRowHover}
+          stripedRows={this.tableOpts.stripedRows}>
           {
             this.props.records.map((row, index) => (<TableRow key={index}>
               <TableRowColumn>{row.data}</TableRowColumn>
