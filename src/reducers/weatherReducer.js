@@ -3,7 +3,6 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  location: 'London,us',
   weatherRecords: []
 }; 
 function weatherAppReducer(state = initialState, action) {

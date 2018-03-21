@@ -5,6 +5,14 @@ import ActionSearch from 'material-ui/svg-icons/action/search';
 import {Field, reduxForm} from 'redux-form'
 import TextField from 'material-ui/TextField'
 
+const validate = values => {
+  const errors = {}
+  if (!values['location']) {
+    errors['location'] = 'Please provide city location'
+  }
+  return errors
+}
+
 const renderTextField = ({
   input,
   label,
@@ -21,15 +29,18 @@ const renderTextField = ({
 let CitySearchForm = props => {
   const {handleSubmit} = props
   return (<form onSubmit={handleSubmit}>
-    <Field name="location" component={renderTextField} label="Location"/>
+    <div>
+      <Field name="location" component={renderTextField} label="Location"/>
+    </div>
     <RaisedButton icon={<ActionSearch />} type="submit"/>
   </form>)
 }
 
 CitySearchForm = reduxForm({
   form: 'citySearchForm',
+  validate,
   initialValues: {
-    location: 'London,us'
+    location: 'London'
   }
 })(CitySearchForm)
 
