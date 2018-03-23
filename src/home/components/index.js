@@ -8,16 +8,25 @@ import MainWeatherTable from '../widgets/main-weather-table'
 import CitySearch from './city-search'
 
 class Home extends Component {
+  openForDay = (date) => {
+    this.props
+        .history
+        .push(`/for-day/${this.props.location}/${date}`)
+  }
+
   render() {
     return  <div>
       <CitySearch />
-      <MainWeatherTable records={this.props.records} />
+      <MainWeatherTable
+        onItemClicked={this.openForDay}
+        records={this.props.records} />
     </div>
   }
 }
 
 Home.propTypes = {
-  weatherRecords: PropTypes.arrayOf(
+  location: PropTypes.string.isRequired,
+  records: PropTypes.arrayOf(
     PropTypes.shape({
       temp: PropTypes.number.isRequired,
       data: PropTypes.string.isRequired,
@@ -27,8 +36,19 @@ Home.propTypes = {
   )
 }
 
+// TODO: reqrite saga to fill location value after succesgul response, and use
+// TODO: this value instaed form one
+const locationVal = (state) => {
+  try {
+    return state.form.citySearchForm.values.location
+  } catch (e) {
+    return 'London'
+    // eslint-disable-next-line
+  };
+}
+
 const mapStateToProps = state => {
-  return {records: state.main.weatherRecords}
+  return {location: locationVal(state), records: state.main.weatherRecords}
 }
 
 Home = connect(mapStateToProps)(Home)

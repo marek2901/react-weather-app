@@ -7,6 +7,7 @@ import {
   TableRow,
   TableRowColumn
 } from 'material-ui/Table';
+import ClickableRow from './clickable-row'
 
 const tableOpts = {
   fixedHeader: false,
@@ -42,12 +43,14 @@ const MainWeatherTable = props => <Table
     showRowHover={tableOpts.showRowHover}
     stripedRows={tableOpts.stripedRows}>
     {
-      props.records.map((row, index) => (<TableRow key={index}>
+      props.records.map((row, index) => (<ClickableRow
+        onClicked={() => props.onItemClicked(row.data)}
+        key={index}>
         <TableRowColumn>{row.data}</TableRowColumn>
         <TableRowColumn>{row.temp}</TableRowColumn>
         <TableRowColumn>{row.wind}</TableRowColumn>
         <TableRowColumn>{row.weather}</TableRowColumn>
-      </TableRow>))
+      </ClickableRow>))
     }
   </TableBody>
 </Table>
