@@ -11,8 +11,8 @@ let store = createStore(
   mainReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(sagaMiddleware)
-);
+)
 
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga)
 
-export default store;
+export default store

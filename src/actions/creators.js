@@ -10,14 +10,14 @@ export function triggerMainReq() {
   }
 }
 
-export function mainReqSuccess(data){
+export function mainReqSuccess(data) {
   return {
     type: REQUEST_SUCCESS_MAIN_WEATHER_DATA,
     data
   }
 }
 
-export function mainReqFailure(message){
+export function mainReqFailure(message) {
   return {
     type: REQUEST_FAILURE_MAIN_WEATHER_DATA,
     message
